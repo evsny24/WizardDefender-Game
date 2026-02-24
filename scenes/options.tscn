@@ -1,0 +1,113 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0qvion54v6ah"]
+
+[ext_resource type="Script" uid="uid://c28isrsr266wy" path="res://scripts/Directions.gd" id="1_gqw6a"]
+[ext_resource type="Texture2D" uid="uid://c8cxte6kr2iko" path="res://assets/misc/Background.png" id="2_n3yoh"]
+[ext_resource type="Script" uid="uid://b2doxauwup2ns" path="res://scripts/audiostuffs.gd" id="3_vriph"]
+[ext_resource type="AudioStream" uid="uid://bl2jfimmty44c" path="res://audio/directionsmusic.wav" id="4_radlq"]
+[ext_resource type="AudioStream" uid="uid://dfbsefewg1r0a" path="res://audio/menuclicks.wav" id="5_pxb4f"]
+[ext_resource type="Texture2D" uid="uid://d07a6mh2aird4" path="res://assets/misc/download.png" id="5_q1cbb"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gqw6a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(568, 124)
+scale = Vector2(1.3492, 1.3492)
+texture = ExtResource("2_n3yoh")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+z_index = 53
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 272.0
+offset_top = -375.0
+offset_right = -439.0
+offset_bottom = -238.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.43118, 1.42213)
+alignment = 1
+
+[node name="Master Volume" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "                                      Master Volume"
+
+[node name="Master" type="HSlider" parent="VBoxContainer2"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("3_vriph")
+bus_name = "Master"
+
+[node name="Music Volume" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "                                       Music Volume"
+
+[node name="Music" type="HSlider" parent="VBoxContainer2"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("3_vriph")
+bus_name = "Music"
+
+[node name="SFX Volume" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "                                         SFX Volume"
+
+[node name="SFX" type="HSlider" parent="VBoxContainer2"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("3_vriph")
+bus_name = "SFX"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_radlq")
+bus = &"Music"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_pxb4f")
+bus = &"SFX"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(577, 326)
+position_smoothing_enabled = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 582.0
+offset_right = 97.0
+offset_bottom = 613.0
+scale = Vector2(1.22186, 1.22186)
+text = "Return"
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.2)
+position = Vector2(591.25, 372)
+scale = Vector2(3.06387, 1.64865)
+texture = ExtResource("5_q1cbb")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 446.0
+offset_top = 103.0
+offset_right = 512.0
+offset_bottom = 131.0
+scale = Vector2(4.37125, 4.09633)
+text = "Options"
+
+[connection signal="mouse_entered" from="VBoxContainer2" to="." method="_on_v_box_container_2_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer2" to="." method="_on_v_box_container_2_mouse_exited"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

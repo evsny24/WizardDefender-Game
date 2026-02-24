@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=3 uid="uid://bp63gmy4vkcuk"]
+
+[ext_resource type="Script" uid="uid://b4hqpaijstnt6" path="res://scripts/menu.gd" id="1_7pabc"]
+[ext_resource type="Texture2D" uid="uid://c8cxte6kr2iko" path="res://assets/misc/Background.png" id="2_1ury5"]
+[ext_resource type="AudioStream" uid="uid://b0utiak7gxu7j" path="res://audio/menumusic.wav" id="3_db3gx"]
+[ext_resource type="AudioStream" uid="uid://dfbsefewg1r0a" path="res://audio/menuclicks.wav" id="4_wmij4"]
+
+[node name="menu" type="Control"]
+z_index = 11
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7pabc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+z_index = 11
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -243.0
+offset_top = 29.0
+offset_right = 239.0
+offset_bottom = 174.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+z_index = 11
+layout_mode = 2
+text = "Start"
+
+[node name="directions" type="Button" parent="VBoxContainer"]
+z_index = 11
+layout_mode = 2
+text = "Directions"
+
+[node name="options" type="Button" parent="VBoxContainer"]
+z_index = 5
+layout_mode = 2
+text = "Options"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+z_index = 11
+layout_mode = 2
+text = "Quit"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 11
+position = Vector2(579, 142)
+scale = Vector2(1.31952, 1.31952)
+texture = ExtResource("2_1ury5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+z_index = 11
+position = Vector2(574, 327)
+scale = Vector2(1, 4.16)
+position_smoothing_enabled = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+z_index = 11
+layout_mode = 0
+offset_left = 335.0
+offset_top = 184.0
+offset_right = 466.0
+offset_bottom = 224.0
+scale = Vector2(3.68315, 3.68315)
+text = "Wizard Defender"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_db3gx")
+bus = &"Music"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wmij4")
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="VBoxContainer" to="." method="_on_v_box_container_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer" to="." method="_on_v_box_container_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/directions" to="." method="_on_directions_pressed"]
+[connection signal="pressed" from="VBoxContainer/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://d3ofxed1xk58g"]
+
+[ext_resource type="Script" uid="uid://54odxfasmduq" path="res://scripts/dragon2.gd" id="1_qe867"]
+[ext_resource type="Texture2D" uid="uid://ci8cv11bc15n8" path="res://assets/dragon/gothicvania patreon collection/demon-Files/PNG/demon-idle.png" id="2_1nwja"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bxhd"]
+atlas = ExtResource("2_1nwja")
+region = Rect2(0, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30aup"]
+atlas = ExtResource("2_1nwja")
+region = Rect2(160, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfoxr"]
+atlas = ExtResource("2_1nwja")
+region = Rect2(320, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_476md"]
+atlas = ExtResource("2_1nwja")
+region = Rect2(480, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rn7yh"]
+atlas = ExtResource("2_1nwja")
+region = Rect2(640, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps8cp"]
+atlas = ExtResource("2_1nwja")
+region = Rect2(800, 0, 160, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wwfat"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bxhd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30aup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfoxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_476md")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rn7yh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ps8cp")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 9.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t6tsw"]
+radius = 17.0
+height = 70.0
+
+[node name="dragon3" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_qe867")
+
+[node name="enemy" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -1)
+sprite_frames = SubResource("SpriteFrames_wwfat")
+animation = &"fly"
+autoplay = "fly"
+frame_progress = 0.869312
+
+[node name="enemy1" type="CollisionShape2D" parent="."]
+position = Vector2(-12, 9)
+rotation = 0.0277281
+scale = Vector2(1.86507, 1.364)
+shape = SubResource("CapsuleShape2D_t6tsw")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-20, -12)

@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://k6ktwjcpclrx"]
+
+[ext_resource type="Texture2D" uid="uid://dpl62i5ko1gcn" path="res://assets/Free Smoke Fx Pixel 2/Free Smoke Fx  Pixel 07.png" id="1_fnhyx"]
+
+[resource]
+atlas = ExtResource("1_fnhyx")
+region = Rect2(384, 768, 64, 64)

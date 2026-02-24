@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://bb3nxfk2ife32"]
+
+[ext_resource type="Texture2D" uid="uid://c7r5ryep7dlmr" path="res://assets/Blue Witch/Elementstäbe.png" id="1_rj1lj"]
+[ext_resource type="Texture2D" uid="uid://caf6odbyy6et5" path="res://assets/Blue Witch/Elementstäbe - Copy.png" id="2_7kkqt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yf0kk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7kkqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_rj1lj")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmqox"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(0, -4.76837e-07)
+rotation = 0.00365284
+
+[node name="Elementstäbe2" type="Sprite2D" parent="."]
+position = Vector2(20.9999, -0.076709)
+rotation = 1.56825
+scale = Vector2(1.08381, 1.08381)
+texture = ExtResource("1_rj1lj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Elementstäbe2"]
+position = Vector2(5.96046e-08, -1.71363e-06)
+scale = Vector2(1.03722, 1.00573)
+sprite_frames = SubResource("SpriteFrames_yf0kk")
+animation = &"attack"
+frame = 1
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(20.9999, -0.076709)
+shape = SubResource("RectangleShape2D_rmqox")

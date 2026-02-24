@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://dmy57i6jnf57s"]
+
+[ext_resource type="Texture2D" uid="uid://dwo238o081q5l" path="res://assets/fireball/FB001.png" id="1_sdvpy"]
+[ext_resource type="Script" uid="uid://fey3kok32u5h" path="res://scripts/fireball.gd" id="1_tbf2n"]
+[ext_resource type="Texture2D" uid="uid://y8b0svshuujf" path="res://assets/fireball/FB002.png" id="2_638vy"]
+[ext_resource type="Texture2D" uid="uid://c5k3bmvpfs12f" path="res://assets/fireball/FB003.png" id="3_24jbr"]
+[ext_resource type="Texture2D" uid="uid://2vul2g1dt3mj" path="res://assets/fireball/FB004.png" id="4_vo7ic"]
+[ext_resource type="Texture2D" uid="uid://ceblemiqqhbjb" path="res://assets/fireball/FB005.png" id="5_cp838"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rujg8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_sdvpy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_638vy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_24jbr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vo7ic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cp838")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qkkic"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vq3wo"]
+
+[node name="fireball" type="RigidBody2D"]
+script = ExtResource("1_tbf2n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_rujg8")
+autoplay = "default"
+frame_progress = 0.140729
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(12, -1.45)
+scale = Vector2(0.822022, 0.822022)
+shape = SubResource("CircleShape2D_qkkic")
+
+[node name="Area2D" type="Area2D" parent="." groups=["player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(12, -1.735)
+scale = Vector2(0.80573, 0.80573)
+shape = SubResource("CircleShape2D_vq3wo")
+
+[node name="life" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="life" to="." method="_on_life_timeout"]
