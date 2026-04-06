@@ -55,4 +55,4 @@ This project is open source and available for educational and learning purposes.
 
 ---
 
-*Developed by Evan S.*
+*Developed by evsny24*
